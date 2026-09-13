@@ -6,7 +6,6 @@
 - **Zero build step** — plain HTML, CSS and vanilla JS. Open it and it runs.
 - **5 languages** out of the box: English, Español, Deutsch, 日本語, 한국어.
 - Clear **leisure vs. business (MICE)** split, encoded in copy and color.
-- **China-focused** destinations and sample itineraries.
 - Responsive, light and airy layout.
 - Inquiry form (front-end demo — wire it to a backend/CRM later).
 
@@ -33,7 +32,6 @@ python3 -m http.server 8000
 
 1. Nav
 2. Hero (dual CTA — leisure / business)
-3. **Two ways to travel** — Leisure Travel vs. Business & MICE
 4. Destinations — curated regions of China
 5. Signature journeys — sample itineraries
 6. Services
