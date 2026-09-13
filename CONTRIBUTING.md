@@ -42,6 +42,31 @@ Follow the conventions below so everyone stays in sync.
 - Preserve the **leisure vs. business (MICE)** split in copy and CTAs.
 - No `lorem ipsum` or placeholder text in merged PRs.
 
+## Multi-agent collaboration (Codex / Claude / AntiGravity / …)
+
+Several AI agents may work on this repo at the same time. To avoid stepping on each other:
+
+1. **Read [`AGENTS.md`](./AGENTS.md) before writing anything.**
+2. **One branch per agent per task:** `agent/<tool>/<topic>` (e.g. `agent/codex/i18n-check`).
+3. **Work in your own directory.** Separate machines → separate clones. Same machine →
+   use `git worktree add ../mt-<tool> -b agent/<tool>/<topic> origin/main`.
+4. **Never push to `main`.** Always open a PR; CI + 1 approval are required before merge.
+5. **Squash-merge** to keep `main` history linear and easy to review.
+
+### Automated review gate (CI)
+
+Every PR runs the `validate` job (`.github/workflows/ci.yml`):
+
+- `node --check` on `i18n.js` and `script.js` (JavaScript syntax)
+- `node scripts/check.mjs` — verifies **all 5 languages share the same keys**,
+  arrays match, no empty strings, and every `data-i18n` key in `index.html` resolves.
+
+Run it locally before pushing:
+
+```bash
+node scripts/check.mjs
+```
+
 ## Secrets
 
 - **Never commit tokens, keys or `.env` files.** `.gitignore` already covers the common ones.

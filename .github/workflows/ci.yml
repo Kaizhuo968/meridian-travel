@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    name: validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: JavaScript syntax check
+        run: |
+          node --check i18n.js
+          node --check script.js
+
+      - name: i18n & HTML integrity check
+        run: node scripts/check.mjs
