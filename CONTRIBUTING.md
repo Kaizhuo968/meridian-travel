@@ -37,9 +37,6 @@ Follow the conventions below so everyone stays in sync.
 - Keep dynamic list content (cards, journeys, services, …) in `i18n.js` — never hard-code it in `index.html`.
 
 ## Content rules
-
-- Audience = **international travelers to China**.
-- Preserve the **leisure vs. business (MICE)** split in copy and CTAs.
 - No `lorem ipsum` or placeholder text in merged PRs.
 
 ## Multi-agent collaboration (Codex / Claude / AntiGravity / …)
