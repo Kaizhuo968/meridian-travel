@@ -18,28 +18,32 @@ Follow the conventions below so everyone stays in sync.
 |--------|---------|
 | `feat/` | new feature or section |
 | `fix/` | bug fix |
-| `content/` | copy, destinations, itineraries |
+| `content/` | copy, cards, plans, services |
 | `i18n/` | translations |
 | `chore/` | tooling, housekeeping |
+
+AI agents should use the `agent/<tool>/<topic>` namespace (see `AGENTS.md`).
 
 ## Commit messages
 
 `type(scope): summary` — for example:
 
-- `content(cards): add Tibet region`
+- `content(cards): add performance feature card`
 - `fix(lang): persist language selection on reload`
 - `i18n(ja): translate services section`
+- `feat(ui): add social media link block`
 
 ## i18n rules
 
-- Whenever you touch a translatable string, update **all 5 languages** in `i18n.js`.
+- Whenever you touch a translatable string, update **all 7 languages** in `i18n.js`.
 - Keys must stay **identical** across every language object.
-- Keep dynamic list content (cards, journeys, services, …) in `i18n.js` — never hard-code it in `index.html`.
+- Keep dynamic list content (cards, plans, services, …) in `i18n.js` — never hard-code it in `index.html`.
+- If a new language is right-to-left, add it to `RTL_LANGS` in `i18n.js`.
 
 ## Content rules
 
-- Audience = **international travelers to China**.
-- Preserve the **leisure vs. business (MICE)** split in copy and CTAs.
+- This project is a **generic template** — do not frame it for a specific industry or product.
+- Keep copy brand-neutral until real brand details are ready.
 - No `lorem ipsum` or placeholder text in merged PRs.
 
 ## Multi-agent collaboration (Codex / Claude / AntiGravity / …)
@@ -58,12 +62,13 @@ Several AI agents may work on this repo at the same time. To avoid stepping on e
 Every PR runs the `validate` job (`.github/workflows/ci.yml`):
 
 - `node --check` on `i18n.js` and `script.js` (JavaScript syntax)
-- `node scripts/check.mjs` — verifies **all 5 languages share the same keys**,
+- `node scripts/check.mjs` — verifies **all 7 languages share the same keys**,
   arrays match, no empty strings, and every `data-i18n` key in `index.html` resolves.
 
 Run it locally before pushing:
 
 ```bash
+node --check i18n.js && node --check script.js
 node scripts/check.mjs
 ```
 

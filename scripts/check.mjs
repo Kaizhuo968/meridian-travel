@@ -67,9 +67,12 @@ function emptyPaths(obj, prefix = "", out = []) {
 }
 const get = (o, p) => p.split(".").reduce((a, k) => (a && a[k] != null ? a[k] : undefined), o);
 
+// Some keys are intentionally empty (e.g. an optional suffix).
+const ALLOW_EMPTY = new Set(["journeys.per"]);
+
 const refKeys = new Set(keyPaths(refObj));
 const refArrays = arrayLengths(refObj);
-const refEmpty = emptyPaths(refObj).filter((p) => p !== "");
+const refEmpty = emptyPaths(refObj).filter((p) => p !== "" && !ALLOW_EMPTY.has(p));
 
 if (refEmpty.length) errors.push(`${REF}: empty string at ${refEmpty.join(", ")}`);
 
@@ -84,7 +87,7 @@ for (const lang of LANGS) {
     if (arr[k] !== refArrays[k])
       errors.push(`[${lang}] array length mismatch at ${k}: ${arr[k]} vs ${refArrays[k]} (expected)`);
 
-  for (const p of emptyPaths(I18N[lang]).filter((x) => x !== ""))
+  for (const p of emptyPaths(I18N[lang]).filter((x) => x !== "" && !ALLOW_EMPTY.has(x)))
     errors.push(`[${lang}] empty string at ${p}`);
 }
 

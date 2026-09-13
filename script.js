@@ -15,6 +15,7 @@
       if (v !== undefined) el.textContent = v;
     });
     document.documentElement.lang = lang;
+    document.documentElement.dir = RTL_LANGS.indexOf(lang) !== -1 ? "rtl" : "ltr";
     var cur = document.getElementById("langCurrent");
     if (cur) cur.textContent = LANG_NAMES[lang];
   }

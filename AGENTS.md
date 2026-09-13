@@ -14,10 +14,12 @@ and by humans. Follow these rules so nobody clobbers anybody else's work.
    Never share a working directory with another agent.
 4. **Start from the latest `main`.** `git fetch origin && git checkout -b <branch> origin/main`.
 5. **Stay in scope.** Do not reformat or "fix" files unrelated to your task.
-6. **i18n is all-or-nothing.** If you touch user-facing copy, update **all 5 languages**
+6. **i18n is all-or-nothing.** If you touch user-facing copy, update **all 7 languages**
    in `i18n.js`. CI enforces key parity across languages.
-7. **No secrets.** Never commit tokens, API keys or `.env` files.
-8. **Green before review.** Run the checks locally and make sure CI passes.
+7. **RTL counts.** If you touch layout or translation logic, test Arabic (`ar`) — it is
+   the only RTL language and uses `document.documentElement.dir = "rtl"`.
+8. **No secrets.** Never commit tokens, API keys or `.env` files.
+9. **Green before review.** Run the checks locally and make sure CI passes.
 
 ## Branch naming
 
@@ -25,7 +27,7 @@ and by humans. Follow these rules so nobody clobbers anybody else's work.
 agent/<tool>/<topic>
 ```
 
-Examples: `agent/codex/i18n-check`, `agent/claude/booking-form`, `agent/antigravity/hero-redesign`.
+Examples: `agent/codex/i18n-check`, `agent/claude/hero-redesign`, `agent/antigravity/social-links`.
 This keeps each agent's branches in their own namespace and makes the author obvious.
 
 ## Workflow
@@ -75,13 +77,15 @@ grab the same file.
 
 ## Content rules
 
-- Audience = **international travelers to China**.
-- Preserve the **leisure vs. business (MICE)** split in copy and CTAs.
+- This repo is a **generic template** — do not frame it for a specific industry or product.
+- Keep copy brand-neutral and replace placeholders (brand name, contact info, social URLs)
+  in a single focused PR when the real values are known.
 - No placeholder or `lorem ipsum` text in merged PRs.
 
 ## Definition of done
 
 - [ ] CI green (`validate`)
 - [ ] 1 approval on the PR
-- [ ] i18n keys in sync across all languages
+- [ ] i18n keys in sync across all 7 languages
+- [ ] RTL (Arabic) checked if layout or copy changed
 - [ ] Previewed locally

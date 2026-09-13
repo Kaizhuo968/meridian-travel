@@ -5,16 +5,17 @@
 ## Scope
 
 - **Author / agent:** <!-- e.g. codex / claude / antigravity / human -->
-- **Branch:** <!-- agent/<tool>/<topic> -->
+- **Branch:** <!-- agent/<tool>/<topic> or feat/<topic> -->
 - **Files touched:**
-- **i18n updated for all 5 languages?** <!-- yes / n/a -->
+- **i18n updated for all 7 languages?** <!-- yes / n/a -->
+- **RTL (Arabic) checked?** <!-- yes / n/a -->
 
 ## Checklist
 
 - [ ] Branched off the latest `main`
 - [ ] One task, one PR (kept small and focused)
 - [ ] CI green (`validate`)
-- [ ] i18n keys in sync across EN / ES / DE / JA / KO
+- [ ] i18n keys in sync across EN / ES / DE / JA / KO / AR / FR
 - [ ] No secrets committed
 - [ ] Previewed locally
 
