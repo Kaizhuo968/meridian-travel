@@ -75,4 +75,8 @@ node scripts/check.mjs
 ## Secrets
 
 - **Never commit tokens, keys or `.env` files.** `.gitignore` already covers the common ones.
+- API keys (Paddle, OpenAI, Supabase, Stripe) are loaded from **environment variables**
+  at build time — see `env.example` and `scripts/build-env.mjs`. Do not hardcode them in
+  `config.js` or anywhere in the source.
+- `OPENAI_API_KEY` and `STRIPE_SECRET` are **server-only** — keep them out of client code.
 - Use a personal access token **only locally** for pushing — never paste it into a file, commit or PR.

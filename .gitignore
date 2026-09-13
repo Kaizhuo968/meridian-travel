@@ -19,3 +19,10 @@ yarn-error.log*
 .env
 .env.*
 *.pem
+
+# Generated at build/deploy time from secrets (do NOT commit real values)
+env.generated.js
+
+# Vercel / Node
+.vercel/
+node_modules/

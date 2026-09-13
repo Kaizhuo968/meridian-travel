@@ -70,6 +70,36 @@ python3 -m http.server 8000
 Defined as CSS variables in `:root` (`styles.css`): warm paper background, near-black ink,
 and an accent color. Edit the tokens to re-theme the whole page.
 
+## Environment variables / secrets
+
+This template **never hardcodes API keys**. Secrets are provided at deploy time
+through environment variables and injected into the client as `window.__ENV`.
+
+| Variable | Used for | Exposure |
+|----------|----------|----------|
+| `PADDLE_API_KEY` | Paddle billing | client-safe (publishable) |
+| `OPENAI_API_KEY` | OpenAI | **server-only** |
+| `SUPABASE_KEY` | Supabase anon/client key | client-safe (publishable) |
+| `STRIPE_SECRET` | Stripe | **server-only** |
+
+**Workflow**
+
+1. Copy `env.example` → `.env` for local experiments (gitignored).
+2. In production, set the variables in your platform instead of committing them:
+   - **Vercel:** Project Settings → Environment Variables
+   - **GitHub Actions:** Repo Settings → Secrets and variables → Actions
+3. The build step generates `env.generated.js` from those variables:
+
+   ```bash
+   node scripts/build-env.mjs
+   ```
+
+   `env.generated.js` is gitignored and exposes the values as `window.__ENV`.
+4. `config.js` reads `window.__ENV` into `window.CONFIG` for app code.
+
+> ⚠️ `OPENAI_API_KEY` and `STRIPE_SECRET` are **secret** — never read them in
+> browser code. Proxy them through a backend / serverless function.
+
 ## Development rules
 
 - This is a **generic template** — keep copy brand-neutral and do not qualify it for a
