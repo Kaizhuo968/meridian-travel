@@ -1,9 +1,5 @@
-# MERIDIAN — China Travel Website
 
-A static, multilingual marketing website for a China-based inbound travel agency serving
-**international travelers**, with two distinct paths: **Leisure Travel** and **Business & MICE**.
-
-> `MERIDIAN` is a **placeholder brand name** — swap it for the real brand when available.
+##目前主题还没定下
 
 ## Highlights
 
