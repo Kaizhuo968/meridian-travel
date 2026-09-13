@@ -73,11 +73,6 @@ git push -u origin agent/<tool>/<topic>
 Announce what you are taking in the PR description / linked Issue so two agents don't
 grab the same file.
 
-## Content rules
-
-- Audience = **international travelers to China**.
-- Preserve the **leisure vs. business (MICE)** split in copy and CTAs.
-- No placeholder or `lorem ipsum` text in merged PRs.
 
 ## Definition of done
 
